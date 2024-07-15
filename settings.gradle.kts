@@ -1,2 +1,2 @@
-rootProject.name = "locatio"
+rootProject.name = "location"
 
