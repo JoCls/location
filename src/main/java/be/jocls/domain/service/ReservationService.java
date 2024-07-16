@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservationService {
@@ -19,7 +20,15 @@ public class ReservationService {
         return reservationRepository.findByItemAndEndTimeAfterAndStartTimeBefore(item, endTime, startTime);
     }
 
-    public Reservation saveReservation(Reservation reservation) {
+    public Reservation createReservation(Reservation reservation) {
         return reservationRepository.save(reservation);
+    }
+
+    public Optional<Reservation> getReservation(Long id) {
+        return reservationRepository.findById(id);
+    }
+
+    public List<Reservation> getAllReservations() {
+        return reservationRepository.findAll();
     }
 }

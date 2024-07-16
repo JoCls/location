@@ -1,13 +1,11 @@
 package be.jocls.domain.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Data
-@Getter @Setter @NoArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class User {
 
