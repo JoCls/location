@@ -4,7 +4,6 @@ import be.jocls.application.service.UserService;
 import be.jocls.domain.model.User;
 import be.jocls.domain.model.UserRole;
 import be.jocls.domain.repository.UserRepository;
-import be.jocls.application.service.UserRegistrationService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
