@@ -34,4 +34,8 @@ public class UserRegistrationDTO {
 
     @NotBlank
     private UserRole userRole;
+
+    private String teacherCertification;
+
+
 }
