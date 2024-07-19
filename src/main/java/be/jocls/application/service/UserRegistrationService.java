@@ -18,7 +18,7 @@ public class UserRegistrationService {
 
 
     private static final String TEACHER_CERTIFICATION_REQUIRED_VALUE = "EDU_T_42";
-    private static final String TEACHER_EMAIL_DOMAIN = "@edu.be";
+    private static final String TEACHER_EMAIL_DOMAIN = "@cesstex.be";
 
     public void registerUser(UserRegistrationDTO userRegistrationDTO) {
 
