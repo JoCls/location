@@ -1,9 +1,9 @@
 package be.jocls.service;
 
+import be.jocls.application.service.UserService;
 import be.jocls.domain.model.User;
 import be.jocls.domain.model.UserRole;
 import be.jocls.domain.repository.UserRepository;
-import be.jocls.domain.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -26,10 +26,15 @@ public class UserServiceTest {
 
     @Test
     void findByUsername_userExists() {
-        User user = new User(1L, "testuser", "password", "test@example.com", UserRole.STUDENT);
+        User user = User.builder()
+                .username("testuser")
+                .password("password")
+                .email("test@example.com")
+                .userRole(UserRole.STUDENT)
+                .build();
         when(userRepository.findByUsername("testuser")).thenReturn(Optional.of(user));
 
-        Optional<User> foundUser = userService.findByUsername("testuser");
+        Optional<User> foundUser = userService.getUserByUsername("testuser");
 
         assertTrue(foundUser.isPresent());
         assertEquals("testuser", foundUser.get().getUsername());
@@ -39,7 +44,7 @@ public class UserServiceTest {
     void findByUsername_userDoesNotExist() {
         when(userRepository.findByUsername("unknown")).thenReturn(Optional.empty());
 
-        Optional<User> foundUser = userService.findByUsername("unknown");
+        Optional<User> foundUser = userService.getUserByUsername("unknown");
 
         assertFalse(foundUser.isPresent());
     }

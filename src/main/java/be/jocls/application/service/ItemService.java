@@ -1,4 +1,4 @@
-package be.jocls.domain.service;
+package be.jocls.application.service;
 
 import be.jocls.domain.model.Item;
 import be.jocls.domain.repository.ItemRepository;

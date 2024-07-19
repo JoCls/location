@@ -1,7 +1,7 @@
 package be.jocls.infrastructure.controller;
 
 import be.jocls.domain.model.Item;
-import be.jocls.domain.service.ItemService;
+import be.jocls.application.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
