@@ -27,6 +27,17 @@ public class ReservationController {
     @PreAuthorize("hasAnyRole('STUDENT', 'TEACHER', 'ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<ReservationDTO> createReservation(@RequestBody ReservationDTO reservationDTO) {
+        // Check for conflicts
+        boolean hasConflict = reservationService.hasConflict(
+                reservationDTO.getStartTime(),
+                reservationDTO.getEndTime(),
+                reservationDTO.getItem().getId()
+        );
+
+        if (hasConflict) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
         Reservation reservation = reservationMapper.toEntity(reservationDTO);
         Reservation createdReservation = reservationService.createReservation(reservation);
         ReservationDTO responseDTO = reservationMapper.toDto(createdReservation);

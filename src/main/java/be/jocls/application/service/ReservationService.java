@@ -52,4 +52,9 @@ public class ReservationService {
     public List<Reservation> getAllReservations() {
         return reservationRepository.findAll();
     }
+
+    public boolean hasConflict(LocalDateTime startTime, LocalDateTime endTime, Long itemId) {
+        List<Reservation> conflictingReservations = reservationRepository.findConflictingReservations(startTime, endTime, itemId);
+        return !conflictingReservations.isEmpty();
+    }
 }
