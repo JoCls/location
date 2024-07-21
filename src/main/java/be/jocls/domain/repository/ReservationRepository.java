@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
     List<Reservation> findByItemAndEndTimeAfterAndStartTimeBefore(Item item, LocalDateTime endTime, LocalDateTime startTime);
+    List<Reservation> findByUserUsername(String username);
 }
