@@ -1,6 +1,9 @@
-package be.jocls.domain.model;
+package be.jocls.application.dto;
 
-import jakarta.persistence.*;
+import be.jocls.domain.model.Item;
+import be.jocls.domain.model.ItemType;
+import be.jocls.domain.model.ReservationStatus;
+import be.jocls.domain.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,29 +11,16 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class Reservation {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ReservationDTO {
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
     private User user;
-
-    @ManyToOne
-    @JoinColumn(name = "item_id")
     private Item item;
-
     private LocalDateTime startTime;
-
     private LocalDateTime endTime;
-
-    @Enumerated(EnumType.STRING)
     private ReservationStatus reservationStatus;
 }

@@ -55,7 +55,7 @@ public class DBIntegrationTest {
 
         Item item = Item.builder()
                 .name("Projector")
-                .type(ItemType.EQUIPMENT)
+                .itemType(ItemType.EQUIPMENT)
                 .description("A high-quality projector")
                 .build();
         itemRepository.save(item);
@@ -76,7 +76,7 @@ public class DBIntegrationTest {
 
         Item item = Item.builder()
                 .name("Projector")
-                .type(ItemType.EQUIPMENT)
+                .itemType(ItemType.EQUIPMENT)
                 .description("A high-quality projector")
                 .build();
         itemRepository.save(item);
@@ -86,7 +86,7 @@ public class DBIntegrationTest {
                 .item(item)
                 .startTime(LocalDateTime.of(2024, 7, 18, 8, 0))
                 .endTime(LocalDateTime.of(2024, 7, 18, 10, 0))
-                .status(ReservationStatus.APPROVED)
+                .reservationStatus(ReservationStatus.APPROVED)
                 .build();
         reservationRepository.save(reservation);
 
