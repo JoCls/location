@@ -20,7 +20,7 @@ public class Item {
     private String name;
 
     @Enumerated(EnumType.STRING)
-    private ItemType type;
+    private ItemType itemType;
 
     private String description;
 }
