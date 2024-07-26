@@ -2,15 +2,23 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './styles.css';
+import { useAuth } from '../context/AuthContext';
 
 function LoginPage() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
+  const { login } = useAuth();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+
+  const { username, password } = formData;
     
     try {
       const response = await axios.post('http://localhost:8080/api/auth/login', {
@@ -18,8 +26,12 @@ function LoginPage() {
         password
       });
 
+      const role = response.data.userRole;
+      console.log('User Role after login:', role);
+      login(role);  
+
       // Handle successful login, e.g., redirect to dashboard
-      navigate('/dashboard');
+      navigate('/menu');
 
     } catch (error) {
       setError('Login failed. Please try again.');
@@ -31,24 +43,26 @@ function LoginPage() {
   };
 
   return (
-    <div>
+    <div className="login-page">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
+        <div className="form-group">
+          <label>Username: <span className="required">*</span></label>
           <input 
-            type="text" 
-            value={username} 
-            onChange={(e) => setUsername(e.target.value)} 
+            type="username" 
+            name="username"
+            value={formData.email} 
+            onChange={handleChange} 
             required 
           />
         </div>
-        <div>
-          <label>Password:</label>
+        <div className="form-group">
+          <label>Password: <span className="required">*</span></label>
           <input 
             type="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
+            name="password"
+            value={formData.password} 
+            onChange={handleChange} 
             required 
           />
         </div>

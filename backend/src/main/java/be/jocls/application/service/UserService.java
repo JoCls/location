@@ -51,14 +51,17 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public boolean authenticate(String username, String password) {
+    public User authenticate(String username, String password) {
         Optional<User> optionalUser = userRepository.findByUsername(username);
 
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
-            return passwordEncoder.matches(password, user.getPassword());
+            if(passwordEncoder.matches(password, user.getPassword()))
+            {
+                return user;
+            }
         }
 
-        return false;
+        return null;
     }
 }
