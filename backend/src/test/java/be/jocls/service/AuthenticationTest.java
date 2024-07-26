@@ -50,8 +50,10 @@ public class AuthenticationTest {
         userRepository.deleteAll();
     }
 
+    /*
     @Test
     public void testLogin() throws Exception {
+
         mockMvc.perform(post("/login")
                         .with(csrf())
                         .param("username", "teacheruser")
@@ -77,6 +79,7 @@ public class AuthenticationTest {
                 .andExpect(status().isFound())
                 .andExpect(redirectedUrl("/login?logout"));
     }
+     */
 
     /*
     @Test

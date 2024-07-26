@@ -3,6 +3,7 @@ package be.jocls.application.service;
 import be.jocls.domain.model.User;
 import be.jocls.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,12 +15,14 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     public User createUser(User user) {
-        // Additional logic before saving can be added here
         return userRepository.save(user);
     }
 
@@ -46,5 +49,16 @@ public class UserService {
 
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public boolean authenticate(String username, String password) {
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            return passwordEncoder.matches(password, user.getPassword());
+        }
+
+        return false;
     }
 }

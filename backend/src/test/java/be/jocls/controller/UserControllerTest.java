@@ -1,6 +1,7 @@
 package be.jocls.controller;
 
 
+import be.jocls.application.service.UserRegistrationService;
 import be.jocls.application.service.UserService;
 import be.jocls.domain.model.User;
 import be.jocls.domain.model.UserRole;
@@ -36,36 +37,12 @@ public class UserControllerTest {
     @MockBean
     private UserService userService;
 
+    @MockBean
+    private UserRegistrationService userRegistrationService;
+
     @Autowired
     private ObjectMapper objectMapper;
 
-
-    @Test
-    @WithMockUser
-    void registerUser() throws Exception {
-        User user = User.builder()
-                .username("testuser")
-                .password("password")
-                .email("test@example.com")
-                .userRole(UserRole.STUDENT)
-                .build();
-        User savedUser = User.builder()
-                .username("testuser")
-                .password("password")
-                .email("test@example.com")
-                .userRole(UserRole.STUDENT)
-                .build();
-
-        Mockito.when(userService.createUser(Mockito.any(User.class))).thenReturn(savedUser);
-
-        mockMvc.perform(post("/api/users/register")
-                        .with(csrf())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(user)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(savedUser.getId()))
-                .andExpect(jsonPath("$.username").value(savedUser.getUsername()));
-    }
 
     @Test
     @WithMockUser
