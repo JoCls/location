@@ -1,6 +1,5 @@
 package be.jocls.infrastructure.config;
 
-import be.jocls.infrastructure.mapper.ReservationMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

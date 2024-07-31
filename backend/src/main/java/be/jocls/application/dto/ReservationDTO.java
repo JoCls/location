@@ -1,7 +1,6 @@
 package be.jocls.application.dto;
 
 import be.jocls.domain.model.Item;
-import be.jocls.domain.model.ItemType;
 import be.jocls.domain.model.ReservationStatus;
 import be.jocls.domain.model.User;
 import lombok.AllArgsConstructor;

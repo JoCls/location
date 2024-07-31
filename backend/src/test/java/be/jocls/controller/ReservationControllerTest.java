@@ -1,31 +1,23 @@
 package be.jocls.controller;
 
 import be.jocls.application.dto.CreateReservationRequestDTO;
-import be.jocls.application.dto.ReservationDTO;
 import be.jocls.domain.model.*;
 import be.jocls.application.service.ReservationService;
 import be.jocls.domain.repository.UserRepository;
 import be.jocls.infrastructure.config.JwtUtil;
-import be.jocls.infrastructure.controller.ReservationController;
-import be.jocls.infrastructure.mapper.ReservationMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
