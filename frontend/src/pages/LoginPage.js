@@ -24,13 +24,15 @@ function LoginPage() {
       const response = await axios.post('http://localhost:8080/api/auth/login', {
         username,
         password
-      });
+      },
+      {headers:{Authorization:undefined}});
 
-      const role = response.data.userRole;
-      console.log('User Role after login:', role);
-      login(role);  
+      const token = response.data.token;
+      console.log('User token after login:', token);
+      login(token);  
 
       // Handle successful login, e.g., redirect to dashboard
+      console.log("im there ready to redirect");
       navigate('/menu');
 
     } catch (error) {
