@@ -9,7 +9,8 @@ body {
   margin: 0;
 }
 
-.login-page, .register-page {
+.login-page,
+.register-page {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -43,7 +44,8 @@ label {
   color: #666;
 }
 
-input, select {
+input,
+select {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -79,8 +81,8 @@ button:hover {
 
 .success {
   color: green;
-  font-weight: bold; 
-  text-align: center; 
+  font-weight: bold;
+  text-align: center;
   margin-top: 10px;
 }
 
@@ -99,12 +101,287 @@ button:hover {
 }
 
 .back-to-login {
-  text-decoration: none; 
+  text-decoration: none;
   color: #007bff;
   background-color: #f4f4f4;
   border: 1px solid #007bff;
   border-radius: 4px;
   padding: 5px 10px;
   cursor: pointer;
-  margin-top: 20px; 
+  margin-top: 20px;
+}
+
+.create-reservation-page {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.create-reservation-options {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.create-reservation-options button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+}
+
+.create-reservation-options button:hover {
+  background-color: #0056b3;
+}
+
+/* MenuPage Styles */
+.menu-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50vh;
+}
+
+.menu-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.menu-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.menu-button {
+  padding: 20px;
+  margin: 10px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s;
+}
+
+.menu-button:hover {
+  background-color: #0056b3;
+}
+
+.admin-button {
+  background-color: #28a745;
+}
+
+.admin-button:hover {
+  background-color: #218838;
+}
+
+.logout-button {
+  margin-top: auto;
+  padding: 10px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #e60000;
+}
+
+.create-equipment-page {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.date-time-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+input[type="date"],
+input[type="time"] {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 400px;
+  box-sizing: border-box;
+}
+
+.input-error {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+}
+
+.equipment-list {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.equipment-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 30px;
+}
+
+.create-reservation-primary-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 180px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.create-reservation-primary-button:hover {
+  background-color: #0056b3;
+}
+
+.create-reservation-primary-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+input[type="radio"] {
+  width: auto;
+}
+
+.back-button {
+  margin-top: 100px;
+  padding: 10px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  background-color: #f4f4f4;
+  color: #007bff;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #e0e0e0;
+}
+
+.create-classroom-page {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.classroom-list {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.classroom-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 30px;
+}
+
+.reservation-table {
+  width: 100%;
+  border-collapse: separate; 
+  border-spacing: 0 10px;
+  vertical-align: middle;
+}
+
+
+.reservation-table th {
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: bold;
+  text-align: center !important;
+}
+
+.reservation-table th, .reservation-table td {
+  border: 1px solid #ddd;
+  padding: 12px 20px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.reservation-table tr {
+  border-radius: 8px;
+  text-align: middle;
+  vertical-align: middle;
+}
+
+.reservation-past {
+  background-color: #e79a9a; 
+  color: #333; 
+}
+
+.reservation-ongoing {
+  background-color: #9de9af; 
+  color: #333; 
+}
+
+.reservation-future {
+  background-color: #94b4ec;
+  color: #333;
 }

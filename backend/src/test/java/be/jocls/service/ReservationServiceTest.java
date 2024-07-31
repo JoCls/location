@@ -32,7 +32,7 @@ public class ReservationServiceTest {
         LocalDateTime endTime = LocalDateTime.of(2024, 7, 21, 15, 0);
         Long itemId = 1L;
 
-        when(reservationRepository.findConflictingReservations(startTime, endTime, itemId))
+        when(reservationRepository.findConflictingReservationsForItem(startTime, endTime, itemId))
                 .thenReturn(List.of(new Reservation()));
 
         boolean conflict = reservationService.hasConflict(startTime, endTime, itemId);

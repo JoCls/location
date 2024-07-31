@@ -1,6 +1,7 @@
 package be.jocls.application.service;
 
 import be.jocls.domain.model.*;
+import be.jocls.domain.repository.ItemRepository;
 import be.jocls.domain.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ public class ReservationService {
 
     @Autowired
     private ReservationRepository reservationRepository;
+
+    @Autowired
+    private ItemRepository itemRepository;
 
     public List<Reservation> findConflictingReservations(Item item, LocalDateTime startTime, LocalDateTime endTime) {
         return reservationRepository.findByItemAndEndTimeAfterAndStartTimeBefore(item, endTime, startTime);
@@ -54,7 +58,7 @@ public class ReservationService {
     }
 
     public boolean hasConflict(LocalDateTime startTime, LocalDateTime endTime, Long itemId) {
-        List<Reservation> conflictingReservations = reservationRepository.findConflictingReservations(startTime, endTime, itemId);
+        List<Reservation> conflictingReservations = reservationRepository.findConflictingReservationsForItem(startTime, endTime, itemId);
         return !conflictingReservations.isEmpty();
     }
 }

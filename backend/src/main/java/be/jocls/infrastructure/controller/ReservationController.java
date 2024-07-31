@@ -1,14 +1,22 @@
 package be.jocls.infrastructure.controller;
 
+import be.jocls.application.dto.CreateReservationRequestDTO;
 import be.jocls.application.dto.ReservationDTO;
+import be.jocls.domain.model.Item;
 import be.jocls.domain.model.Reservation;
 import be.jocls.application.service.ReservationService;
+import be.jocls.domain.model.ReservationStatus;
+import be.jocls.domain.model.User;
+import be.jocls.domain.repository.ItemRepository;
+import be.jocls.domain.repository.UserRepository;
 import be.jocls.infrastructure.mapper.ReservationMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,21 +32,44 @@ public class ReservationController {
     @Autowired
     private ReservationMapper reservationMapper;
 
+    @Autowired
+    private ItemRepository itemRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
     @PreAuthorize("hasAnyRole('STUDENT', 'TEACHER', 'ADMIN')")
     @PostMapping("/create")
-    public ResponseEntity<ReservationDTO> createReservation(@RequestBody ReservationDTO reservationDTO) {
+    public ResponseEntity<ReservationDTO> createReservation(@RequestBody CreateReservationRequestDTO request) {
+
+        // Get the current user's username
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        Item item = itemRepository.findById(request.getItemId()).orElseThrow(() -> new IllegalArgumentException("Item not found"));
+
+
         // Check for conflicts
         boolean hasConflict = reservationService.hasConflict(
-                reservationDTO.getStartTime(),
-                reservationDTO.getEndTime(),
-                reservationDTO.getItem().getId()
+                request.getStartTime(),
+                request.getEndTime(),
+                request.getItemId()
         );
 
         if (hasConflict) {
             return ResponseEntity.badRequest().body(null);
         }
 
-        Reservation reservation = reservationMapper.toEntity(reservationDTO);
+        Reservation reservation = Reservation.builder()
+                .item(item)
+                .user(user)
+                .startTime(request.getStartTime())
+                .endTime(request.getEndTime())
+                .reservationStatus(ReservationStatus.APPROVED)
+                .build();
+
+
         Reservation createdReservation = reservationService.createReservation(reservation);
         ReservationDTO responseDTO = reservationMapper.toDto(createdReservation);
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
@@ -46,13 +77,20 @@ public class ReservationController {
 
     @PreAuthorize("hasAnyRole('STUDENT', 'TEACHER', 'ADMIN')")
     @GetMapping("/user")
-    public ResponseEntity<List<ReservationDTO>> getUserReservations(Authentication authentication) {
+    public ResponseEntity<List<ReservationDTO>> getUserReservations() {
+        // Get the current user's username
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
+        System.out.println("username when listing reservation: " + username);
+
         List<Reservation> reservations = reservationService.getReservationsByUsername(username);
-        List<ReservationDTO> responseDTOs = reservations.stream()
+
+        // Convert the reservations to DTOs
+        List<ReservationDTO> reservationDTOs = reservations.stream()
                 .map(reservationMapper::toDto)
                 .collect(Collectors.toList());
-        return new ResponseEntity<>(responseDTOs, HttpStatus.OK);
+
+        return new ResponseEntity<>(reservationDTOs, HttpStatus.OK);
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
