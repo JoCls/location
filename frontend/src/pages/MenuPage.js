@@ -3,13 +3,14 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './MenuPage.css';
 import { useAuth } from '../context/AuthContext';
+import './styles.css';
 
 const MenuPage = () => {
   const navigate = useNavigate();
 
   const { userRole, logout } = useAuth();
 
-  console.log('Current User Role in ManuPage:', userRole);
+  console.log('Current User Role in MenuPage:', userRole);
 
   const handleLogout = () => {
     logout();
@@ -17,28 +18,20 @@ const MenuPage = () => {
   };
 
   return (
-    <div className="menu-page">
-      <header className="menu-header">
-        <h1>Welcome to the Reservation System</h1>
-      </header>
+    <div className="menu-container">
+      <div className="menu-header">
+        <h2>Main Menu</h2>
+      </div>
+      <div className="menu-items">
+        <button className="menu-button" onClick={() => navigate('/reservations')}>See My Reservations</button>
+        <button className="menu-button" onClick={() => navigate('/create-reservation')}>Create a New Reservation</button>
 
-      <main className="menu-main">
-        <Link to="/reservations" className="menu-button">
-          See My Reservations
-        </Link>
-        <Link to="/create-reservation" className="menu-button">
-          Create a New Reservation
-        </Link>
         {userRole === 'ADMIN' && (
-          <Link to="/admin-panel" className="menu-button admin-button">
-            Admin Panel
-          </Link>
+          <button className="menu-button admin-button" onClick={() => navigate('/admin')}>Admin Panel</button>
         )}
-      </main>
 
-      <button className="logout-button" onClick={handleLogout}>
-        Logout
-      </button>
+        <button className="logout-button" onClick={handleLogout}>Logout</button>
+      </div>
     </div>
   );
 };
