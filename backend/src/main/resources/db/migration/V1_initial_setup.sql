@@ -1,28 +1,28 @@
 -- V1__Initial_setup.sql
-CREATE TABLE users (
+CREATE TABLE user (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
-    firstName VARCHAR(100) NOT NULL,
-    lastName VARCHAR(100) NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    role VARCHAR(20) NOT NULL
+    user_role VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE items (
+CREATE TABLE item (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
+    item_type VARCHAR(20) NOT NULL,
     description TEXT,
-    owner_id BIGINT NOT NULL,
-    FOREIGN KEY (owner_id) REFERENCES users(id)
 );
 
-CREATE TABLE reservations (
+CREATE TABLE reservation (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     item_id BIGINT NOT NULL,
     user_id BIGINT NOT NULL,
     start_time TIMESTAMP NOT NULL,
     end_time TIMESTAMP NOT NULL,
+    reservation_status VARCHAR(20) NOT NULL,
     FOREIGN KEY (item_id) REFERENCES items(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
