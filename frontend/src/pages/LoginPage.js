@@ -49,7 +49,7 @@ function LoginPage() {
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Username: <span className="required">*</span></label>
+          <label>Username: </label>
           <input 
             type="username" 
             name="username"
@@ -59,7 +59,7 @@ function LoginPage() {
           />
         </div>
         <div className="form-group">
-          <label>Password: <span className="required">*</span></label>
+          <label>Password: </label>
           <input 
             type="password" 
             name="password"
