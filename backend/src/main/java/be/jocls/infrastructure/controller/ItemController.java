@@ -20,10 +20,6 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
-    @GetMapping
-    public ResponseEntity<List<Item>> getAllItems() {
-        return ResponseEntity.ok(itemService.findAll());
-    }
 
     @PostMapping
     public ResponseEntity<Item> createItem(@RequestBody Item item) {
@@ -47,5 +43,31 @@ public class ItemController {
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(responseDTOs);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Item>> getAllItems() {
+        List<Item> items = itemService.findAll();
+        return ResponseEntity.ok(items);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateItem(@PathVariable Long id, @RequestBody Item updatedItem) {
+        try {
+            itemService.updateItem(id, updatedItem);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
+        try {
+            itemService.deleteItemById(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

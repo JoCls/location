@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,18 +38,29 @@ public class ItemService {
 
         List<Item> allItems = itemRepository.findByItemType(itemType);
 
-        // Fetch reservations that conflict with the requested time period
         List<Reservation> conflictingReservations = reservationRepository.findConflictingReservations(
                 startDateTime, endDateTime);
 
-        // Filter out items that are reserved
         List<Long> reservedItemIds = conflictingReservations.stream()
                 .map(reservation -> reservation.getItem().getId())
                 .collect(Collectors.toList());
 
-        // Return items that are not reserved
         return allItems.stream()
                 .filter(item -> !reservedItemIds.contains(item.getId()))
                 .collect(Collectors.toList());
+    }
+
+    public Item updateItem(Long id, Item updatedItem) {
+        Item item = itemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Item not found"));
+
+        item.setName(updatedItem.getName());
+        item.setDescription(updatedItem.getDescription());
+        item.setItemType(updatedItem.getItemType());
+
+        return itemRepository.save(item);
+    }
+
+    public void deleteItemById(Long id) {
+        itemRepository.deleteById(id);
     }
 }
