@@ -23,6 +23,6 @@ CREATE TABLE reservation (
     start_time TIMESTAMP NOT NULL,
     end_time TIMESTAMP NOT NULL,
     reservation_status VARCHAR(20) NOT NULL,
-    FOREIGN KEY (item_id) REFERENCES items(id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (item_id) REFERENCES items(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
