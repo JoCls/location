@@ -1,6 +1,7 @@
 package be.jocls.application.service;
 
 import be.jocls.domain.model.User;
+import be.jocls.domain.model.UserRole;
 import be.jocls.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -43,7 +44,6 @@ public class UserService {
     }
 
     public User updateUser(User user) {
-        // Additional logic for update operations can be added here
         return userRepository.save(user);
     }
 
@@ -63,5 +63,12 @@ public class UserService {
         }
 
         return null;
+    }
+
+    public void updateUserRole(Long id, UserRole newRole) throws Exception {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new Exception("User not found with id: " + id));
+        user.setUserRole(newRole);
+        userRepository.save(user);
     }
 }
