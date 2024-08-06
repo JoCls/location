@@ -19,7 +19,7 @@ const ReservationsPage = () => {
     const fetchReservations = async () => {
       try {
         const response = await axios.get('http://localhost:8080/api/reservations/user');
-        const sortedReservations = response.data.sort((a, b) => new Date(a.endTime) - new Date(b.endTime));
+        const sortedReservations = response.data.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
         setReservations(sortedReservations);
         setLoading(false);
       } catch (err) {
