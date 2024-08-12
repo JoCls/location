@@ -2,6 +2,7 @@ package be.jocls.infrastructure.controller;
 
 import be.jocls.application.dto.CreateReservationRequestDTO;
 import be.jocls.application.dto.ReservationDTO;
+import be.jocls.application.dto.ReservationStatusRequestDTO;
 import be.jocls.domain.model.Item;
 import be.jocls.domain.model.Reservation;
 import be.jocls.application.service.ReservationService;
@@ -20,6 +21,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -38,7 +40,7 @@ public class ReservationController {
     @Autowired
     private UserRepository userRepository;
 
-    @PreAuthorize("hasAnyRole('STUDENT', 'TEACHER', 'ADMIN')")
+
     @PostMapping("/create")
     public ResponseEntity<ReservationDTO> createReservation(@RequestBody CreateReservationRequestDTO request) {
 
@@ -75,7 +77,7 @@ public class ReservationController {
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
-    @PreAuthorize("hasAnyRole('STUDENT', 'TEACHER', 'ADMIN')")
+
     @GetMapping("/user")
     public ResponseEntity<List<ReservationDTO>> getUserReservations() {
         // Get the current user's username
@@ -93,13 +95,13 @@ public class ReservationController {
         return new ResponseEntity<>(reservationDTOs, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
-    @GetMapping
-    public List<Reservation> getAllReservations() {
-        return reservationService.getAllReservations();
+    @GetMapping("/all")
+    public ResponseEntity<List<Reservation>> getAllReservations() {
+        List<Reservation> reservations = reservationService.getAllReservations();
+        return ResponseEntity.ok(reservations);
     }
 
-    @PreAuthorize("hasAnyRole('STUDENT', 'TEACHER', 'ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<ReservationDTO> getReservationById(@PathVariable Long id) {
         return reservationService.getReservationById(id)
@@ -108,5 +110,15 @@ public class ReservationController {
                     return ResponseEntity.ok(responseDTO);
                 })
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{id}/role")
+    public ResponseEntity<Reservation> updateReservationStatus(@PathVariable Long id, @RequestBody ReservationStatusRequestDTO request) {
+        try {
+            reservationService.updateReservationStatus(id, request.getReservationStatus());
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

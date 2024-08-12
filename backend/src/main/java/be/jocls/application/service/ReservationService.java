@@ -61,4 +61,11 @@ public class ReservationService {
         List<Reservation> conflictingReservations = reservationRepository.findConflictingReservationsForItem(startTime, endTime, itemId);
         return !conflictingReservations.isEmpty();
     }
+
+    public void updateReservationStatus(Long id, ReservationStatus reservationStatus) throws Exception {
+        Reservation reservation = reservationRepository.findById(id)
+                .orElseThrow(() -> new Exception("Reservation not found with id: " + id));
+        reservation.setReservationStatus(reservationStatus);
+        reservationRepository.save(reservation);
+    }
 }

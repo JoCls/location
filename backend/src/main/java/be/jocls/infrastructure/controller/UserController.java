@@ -5,7 +5,6 @@ import be.jocls.application.dto.UserRoleRequestDTO;
 import be.jocls.application.service.UserRegistrationService;
 import be.jocls.application.service.UserService;
 import be.jocls.domain.model.User;
-import be.jocls.domain.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
