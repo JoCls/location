@@ -1,2 +1,4 @@
-rootProject.name = "locatio"
+rootProject.name = "location"
 
+include("backend")
+include("frontend")

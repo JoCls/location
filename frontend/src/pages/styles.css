@@ -1,0 +1,776 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.login-page,
+.register-page {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 5px;
+  color: #666;
+}
+
+input,
+select {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 20px;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.create-account-button {
+  margin-top: 10px;
+  background-color: #06971ecc;
+}
+
+.create-account-button:hover {
+  background-color: #0056b3;
+}
+
+.required {
+  color: red;
+  font-weight: bold;
+}
+
+.back-to-login {
+  text-decoration: none;
+  color: #007bff;
+  background-color: #f4f4f4;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.create-reservation-page {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.create-reservation-options {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.create-reservation-options button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+}
+
+.create-reservation-options button:hover {
+  background-color: #0056b3;
+}
+
+/* MenuPage Styles */
+.menu-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50vh;
+}
+
+.menu-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.menu-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.menu-button {
+  padding: 20px;
+  margin: 10px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s;
+}
+
+.menu-button:hover {
+  background-color: #0056b3;
+}
+
+.admin-button {
+  background-color: #28a745;
+}
+
+.admin-button:hover {
+  background-color: #218838;
+}
+
+.logout-button {
+  margin-top: auto;
+  padding: 10px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #e60000;
+}
+
+.create-equipment-page {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.date-time-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+input[type="date"],
+input[type="time"] {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 400px;
+  box-sizing: border-box;
+}
+
+.input-error {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+}
+
+.equipment-list {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.equipment-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 30px;
+}
+
+.create-reservation-primary-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 180px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.create-reservation-primary-button:hover {
+  background-color: #0056b3;
+}
+
+.create-reservation-primary-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+input[type="radio"] {
+  width: auto;
+}
+
+.back-button {
+  margin-top: 100px;
+  padding: 10px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  background-color: #f4f4f4;
+  color: #007bff;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #e0e0e0;
+}
+
+.create-classroom-page {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.classroom-list {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.classroom-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 30px;
+}
+
+.reservation-table {
+  width: 100%;
+  border-collapse: separate; 
+  border-spacing: 0 10px;
+  vertical-align: middle;
+}
+
+
+.reservation-table th {
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: bold;
+  text-align: center !important;
+}
+
+.reservation-table th, .reservation-table td {
+  border: 1px solid #ddd;
+  padding: 12px 20px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.reservation-table tr {
+  border-radius: 8px;
+  text-align: middle;
+  vertical-align: middle;
+}
+
+.reservation-past {
+  background-color: #bdbbbb; 
+  color: #333; 
+}
+
+.reservation-ongoing {
+  background-color: #32e65c; 
+  color: #333; 
+}
+
+.reservation-future {
+  background-color: #27d2f0;
+  color: #333;
+}
+
+.reservation-cancelled {
+  background-color: #f74a59;
+  color: #721c24;
+}
+
+
+.user-management-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.user-management-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.user-table th,
+.user-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+
+.user-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.user-table td select {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.user-table td button {
+  display: block;
+  margin: auto;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ff4d4d;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.user-table td button:hover {
+  background-color: #e60000;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.modal-content p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.modal-content button {
+  margin: 1px;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:first-of-type {
+  background-color: #4caf50;
+  color: white;
+}
+
+.modal-content button:last-of-type {
+  background-color: #f44336;
+  color: white;
+}
+
+.modal-content button:first-of-type:hover {
+  background-color: #45a049;
+}
+
+.modal-content button:last-of-type:hover {
+  background-color: #e53935;
+}
+
+
+
+
+.item-admin-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.item-admin-table {
+  width: 100%;
+  border-collapse: separate; 
+  border-spacing: 0 10px;
+}
+
+.item-admin-table th,
+.item-admin-table td {
+  border: 1px solid #ddd;
+  padding: 12px 20px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.item-admin-table th {
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: bold;
+}
+
+.item-admin-table td input[type="text"],
+.item-admin-table td textarea,
+.item-admin-table td select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.item-admin-table td textarea {
+  resize: vertical;
+}
+
+.item-admin-table td button {
+  padding: 8px 12px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  width: auto;
+  text-align: center;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.item-delete-button {
+  background-color: #ff4d4d;
+}
+
+.item-delete-button:hover {
+  background-color: #c22222cb;
+}
+
+.item-edit-button {
+  background-color: #007bff;
+}
+
+.item-edit-button:hover {
+  background-color: #007bffb2;
+}
+
+.item-save-button {
+  background-color: #28a745;
+}
+
+.item-save-button:hover {
+  background-color: #218838;
+}
+
+.item-cancel-button {
+  background-color: #666d67cb;
+}
+
+.item-cancel-button:hover {
+  background-color: #56555ed5;
+}
+
+.create-button {
+  background-color: #28a745;
+  text-align: center;
+  width: 100%;
+
+}
+
+.create-button:hover {
+  background-color: #218838;
+}
+
+.item-back-button {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  background-color: #f4f4f4;
+  color: #007bff;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  width: auto;
+}
+
+.item-back-button:hover {
+  background-color: #e0e0e0;
+}
+
+.back-to-admin {
+  margin-top: auto;
+  padding: 10px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+
+.back-to-admin:hover {
+  background-color: #e60000;
+}
+
+/* Confirmation Dialog Styles */
+.confirmation-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.confirmation-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.confirmation-content h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.confirmation-content p {
+  margin-bottom: 20px;
+}
+
+.confirmation-content button {
+  margin: 5px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirmation-content button:first-of-type {
+  background-color: #4caf50;
+  color: white;
+}
+
+.confirmation-content button:last-of-type {
+  background-color: #f44336;
+  color: white;
+}
+
+.confirmation-content button:first-of-type:hover {
+  background-color: #45a049;
+}
+
+.confirmation-content button:last-of-type:hover {
+  background-color: #e53935;
+}
+
+
+
+.reservation-admin-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.reservation-admin-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.reservation-admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.reservation-admin-table th,
+.reservation-admin-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.reservation-admin-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.reservation-admin-table td select {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.reservation-admin-table td input,
+.reservation-admin-table td textarea {
+  width: 90%;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.reservation-admin-table td button {
+  display: inline-block;
+  margin: 4px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
