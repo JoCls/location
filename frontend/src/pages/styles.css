@@ -386,6 +386,11 @@ input[type="radio"] {
   color: #333;
 }
 
+.reservation-cancelled {
+  background-color: #f74a59;
+  color: #721c24;
+}
+
 
 .user-management-page {
   max-width: 800px;
@@ -503,9 +508,6 @@ input[type="radio"] {
 
 
 
-
-
-
 .item-admin-page {
   max-width: 800px;
   margin: 0 auto;
@@ -560,8 +562,6 @@ input[type="radio"] {
   transition: background-color 0.3s ease;
 }
 
-
-/* Button Styles */
 button {
   padding: 10px;
   border: none;
@@ -600,11 +600,11 @@ button {
 }
 
 .item-cancel-button {
-  background-color: #56555ed5;
+  background-color: #666d67cb;
 }
 
 .item-cancel-button:hover {
-  background-color: #666d67cb;
+  background-color: #56555ed5;
 }
 
 .create-button {
@@ -712,4 +712,65 @@ button {
 
 .confirmation-content button:last-of-type:hover {
   background-color: #e53935;
+}
+
+
+
+.reservation-admin-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.reservation-admin-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.reservation-admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.reservation-admin-table th,
+.reservation-admin-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.reservation-admin-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.reservation-admin-table td select {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.reservation-admin-table td input,
+.reservation-admin-table td textarea {
+  width: 90%;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.reservation-admin-table td button {
+  display: inline-block;
+  margin: 4px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }

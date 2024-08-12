@@ -30,11 +30,12 @@ const ReservationsPage = () => {
     fetchReservations();
   }, []);
 
-  const getStatusClass  = (startTime, endTime) => {
+  const getStatusClass  = (startTime, endTime, reservationStatus) => {
     const now = new Date();
     const start = new Date(startTime);
     const end = new Date(endTime);
-
+    
+    if (reservationStatus === 'CANCELLED') return 'reservation-cancelled';
     if (end < now) return 'reservation-past';
     if (start <= now && end >= now) return 'reservation-ongoing';
     return 'reservation-future';
@@ -60,7 +61,7 @@ const ReservationsPage = () => {
         </thead>
         <tbody>
           {reservations.map((reservation) => (
-            <tr key={reservation.id} className={getStatusClass(reservation.startTime, reservation.endTime)}>
+            <tr key={reservation.id} className={getStatusClass(reservation.startTime, reservation.endTime, reservation.reservationStatus)}>
               <td>{reservation.user?.username}</td>
               <td>{reservation.item?.name}</td>
               <td>{reservation.item?.itemType}</td>
