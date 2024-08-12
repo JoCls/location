@@ -1,3 +1,4 @@
+-- Flyway migration script
 -- V1__Initial_setup.sql
 CREATE TABLE user (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
