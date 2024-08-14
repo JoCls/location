@@ -27,3 +27,10 @@ CREATE TABLE reservation (
     FOREIGN KEY (item_id) REFERENCES items(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+-- Insert 3 users into the user table
+INSERT INTO user (username, first_name, last_name, password, email, user_role)
+VALUES
+('admin', 'admin', 'admin', '$2a$10$6TfZM7vhksUg4ovjYi4ee.cJG6q.UHIw.rE42cQlX3Q2LRzwOmjO6', 'admin@hotmail.com', 'ADMIN'),
+('teacher', 'teacher', 'teacher', '$10$ZcNSWprfq6Z16byjogD6/eeAz3Sbb1r8X3jWv7xwQjaCJYl7WQmMq', 'teacher@hotmail.com', 'TEACHER'),
+('student', 'student', 'student', '$10$XIdqMlqdZKhij8k8lF1EbOXCHW2UcMkfcggZJIajtqeMc98mDNe/i', 'student@hotmail.com', 'STUDENT');
