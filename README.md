@@ -12,25 +12,25 @@ Schéma base de données
 
 Liste problèmes rencontrés : 
 
-  - Regarding MySQL & Flyway configuration :
-    Fixed spring.properties for hibernate dialect that was not in the correction version. Had to use the MySQL8Dialect instead of MySQL5Dialect to match my MySQL DB version
-    Added the baseline on migration config for Flyway to spring.properties that was missing and causing issue
-    Realised that using Flyway version 10+ caused an issue with missing new dependencies required for using MySql. Had to add "implementation("org.flywaydb:flyway-mysql")" to my build.gradle file
-  - Added Lombok anotation @builder for easier testing. It was causing an issue by forcing to use the AllArgs Constructor with the "id" field in our test cases for DB integration.
-  - I had issue with Spring using the default UserDetailsService resulting in unexpected behaviour regarding user rights in my application.
-    Issue was fixed by specifying a custom UserDetailsService in the http configuration of SecurityFilterChain
-  - I encountered A LOT of issues with trying to make use of Spring Session mangement but there were too much conflicts and weird behaviour with the React part.
-    I decided to swap to a JWT token implementation, easier and more reliable
-  - Had a bug that would allow users to manually pass by the login page and still have access to everything.
-    I Added a context handler that made sure user would be redirected to the login page if they were not authenticated
-  - Removed incorrect anotation in Item with a @OneToMany that caused a recursive call on reservation, making my JSON body infinite, dumb mistake
-  - Forgot to define default starting page of my application to /login, so user would start the app and wait on a full blank page on "/"
-    I added an auto redirect in my ProtectedRoute and AuthContext logic to avoid this
-  - Had issues trying to run the full app on the backend side with included frontend ressources under /static/ but didn't work out. Had to deal with lot of conflict access so I guess it was a bad design call.
-    Went back to the back running on port :8080 and front on :3000, now everything is smooth
-  - Had issues trying to delete users via the admin panel caused by the fact that the DELETE CASCADE was not configured. Making it impossible to delete users with existing reservation due to the use of the foreign key from table Reservation
-  - Had conflict in my backend call with frontend because the JSON payload had an incorrect field "type" instead of "itemType"
-    Corrected it by respecting my DTO/Entities definition
+  - En ce qui concerne la configuration de MySQL et Flyway :
+    Correction de spring.properties pour le dialecte hibernate qui n'était pas dans la bonne version. J'ai dû utiliser le dialecte MySQL8 au lieu du dialecte MySQL5 pour correspondre à la version de ma base de données MySQL.
+    Ajout de la ligne de base de la configuration de migration pour Flyway dans spring.properties qui était manquante et causait des problèmes.
+    J'ai réalisé que l'utilisation de la version 10+ de Flyway causait un problème avec l'absence de nouvelles dépendances nécessaires à l'utilisation de MySql. J'ai dû ajouter « implementation( »org.flywaydb:flyway-mysql« ) » à mon fichier build.gradle.
+  - Ajout de l'anotation Lombok @builder pour faciliter les tests. Elle causait un problème en forçant l'utilisation du constructeur AllArgs avec le champ « id » dans nos cas de test pour l'intégration de la base de données.
+  - J'avais un problème avec Spring qui utilisait le UserDetailsService par défaut, ce qui entraînait un comportement inattendu concernant les droits des utilisateurs dans mon application.
+    Le problème a été résolu en spécifiant un UserDetailsService personnalisé dans la configuration http de SecurityFilterChain.
+  - J'ai rencontré BEAUCOUP de problèmes en essayant d'utiliser la gestion des sessions Spring, mais il y avait trop de conflits et de comportements bizarres avec la partie React.
+    J'ai décidé de passer à une implémentation de jetons JWT, plus simple et plus fiable.
+  - Il y avait un bug qui permettait aux utilisateurs de passer manuellement la page de connexion tout en ayant accès à tout.
+    J'ai ajouté un gestionnaire de contexte qui s'assure que l'utilisateur est redirigé vers la page de connexion s'il n'est pas authentifié.
+  - Suppression d'une anotation incorrecte dans Item avec un @OneToMany qui provoquait un appel récursif sur la réservation, rendant mon corps JSON infini, erreur stupide.
+  - J'ai oublié de définir la page de démarrage par défaut de mon application à /login, ce qui fait que l'utilisateur démarre l'application et attend une page vide sur « / »
+    J'ai ajouté une redirection automatique dans ma logique ProtectedRoute et AuthContext pour éviter cela.
+  - J'ai eu des problèmes en essayant de faire tourner l'application complète du côté du backend avec les ressources du frontend incluses dans /static/ mais cela n'a pas fonctionné. J'ai dû faire face à de nombreux conflits d'accès et je pense que c'était un mauvais choix de conception.
+    Le Back fonctionne sur le port :8080 et le Front sur :3000, maintenant tout va bien.
+  - Problèmes lors de la suppression d'utilisateurs via le panneau d'administration, dus au fait que la fonction DELETE CASCADE n'était pas configurée. Impossibilité de supprimer des utilisateurs ayant une réservation existante en raison de l'utilisation de la clé étrangère de la table Réservation.
+  - J'ai eu un conflit dans mon appel backend avec le frontend parce que la charge utile JSON avait un champ incorrect « type » au lieu de « itemType »
+    Je l'ai corrigé en respectant la définition de mes DTO/Entités.
 
 URL Dépôt Git
 
